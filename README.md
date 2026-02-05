@@ -50,6 +50,9 @@ docker-compose up -d --build
 Una vez que los contenedores estén corriendo, debemos preparar Laravel:
 
 ```bash
+# Cambiar el tiempo de espera a 1 hora
+docker-compose exec app composer config --global process-timeout 3600
+
 # Instalar dependencias de PHP (si no se instalaron en el build)
 docker-compose exec app composer install
 
