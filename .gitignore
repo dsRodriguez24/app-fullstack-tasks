@@ -1,0 +1,13 @@
+/.env
+/.env.*
+/node_modules
+/frontend/node_modules
+/backend/vendor
+/vendor
+/storage
+/public/build
+.idea
+.vscode
+npm-debug.log
+.DS_Store
+/.docker
