@@ -14,8 +14,8 @@ Sigue estos pasos en orden para levantar el entorno de desarrollo:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/dsRodriguez24/app-fullstack-tasks.git
+cd app-fullstack-tasks
 ```
 
 ### 2. Configurar variables de entorno
