@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Container, Grid } from '@mui/material';
-import { Link, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Link, Paper, Stack, TextField, Typography, LinearProgress } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,11 +9,13 @@ import LogoHeader from 'layouts/main-layout/sidebar/LogoHeader';
 import { handleSignUp } from 'api/signup';
 import { validate } from 'helpers/signup';
 
+
 const checkBoxLabel = { inputProps: { 'aria-label': 'Aceptar términos' } };
 
 const SignUp = () => {
   const navigate = useNavigate();
 
+  const [isValidating, setIsValidating]           = useState(false);
   const [statusValidated, setStatusValidated]     = useState(0);
   const [messageValidated, setMessageValidated]   = useState('');
   
@@ -29,7 +31,9 @@ const SignUp = () => {
     event.preventDefault();
     if (!validate( { firstName, lastName, email, password, confirmPassword, setErrors })) return;
 
+    setIsValidating(true);
     const {success, message }  = await handleSignUp(firstName, lastName, email, password);
+    setIsValidating(false);
     
     setTimeout(() => {
       setStatusValidated(0);
@@ -146,9 +150,9 @@ const SignUp = () => {
           </Grid>
 
           { statusValidated > 0 && <Alert severity={ statusValidated === 1 ? "error" : "success"} sx={ { mt: 2 } } >{ messageValidated} </Alert> }
-          
+          {isValidating && <LinearProgress sx={{ mt: 2 }} /> }
 
-          <Button type="submit" size="large" variant="contained" sx={{ mt: 2 }} fullWidth>
+          <Button type="submit" size="large" variant="contained" sx={{ mt: 2 }} disabled={isValidating}  fullWidth>
             Crear cuenta
           </Button>
         </Box>
