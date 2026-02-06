@@ -2,8 +2,11 @@
 import axios from 'axios';
 import { store } from '../store/store';
 import { setCredentials, logout } from '../store/authSlice';
+import { baseBackendUrl } from 'helpers/utils';
 
-const baseURL = 'http://localhost:8000/api/';
+const baseURL = baseBackendUrl + 'api/';
+
+console.log( { baseURL});
 
 const api = axios.create({
     baseURL,

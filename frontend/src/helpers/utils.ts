@@ -1,5 +1,5 @@
 // export const baseBackendUrl = 'http://localhost:8000';
-export const baseBackendUrl = 'http://localhost/';
+export const baseBackendUrl = 'http://localhost:80/';
 export const numberFormat = (number: number, notation: 'standard' | 'compact' = 'standard') =>
   new Intl.NumberFormat('en-US', {
     notation,

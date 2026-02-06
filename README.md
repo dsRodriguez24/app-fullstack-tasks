@@ -60,7 +60,10 @@ docker-compose exec app composer install
 docker-compose exec app php artisan key:generate
 
 # Ejecutar migraciones y seeders
-docker-compose exec app php artisan migrate --seed
+docker-compose exec app php artisan migrate
+
+# Ejecutar jwt
+docker-compose exec app php artisan jwt:secret
 
 # Ajustar permisos de storage (Crucial para Laravel 11)
 docker-compose exec app chown -R www-data:www-data storage bootstrap/cache
@@ -83,8 +86,3 @@ Una vez finalizado el proceso, puedes acceder a:
 | Acceder a la consola del backend | `docker-compose exec app bash` |
 | Acceder a la consola del frontend | `docker-compose exec frontend sh` |
 | Reiniciar un servicio específico | `docker-compose restart frontend` |
-
-## ⚠️ Notas de Desarrollo
-
-- **Hot Reload:** El frontend está configurado para detectar cambios en tiempo real gracias a los volúmenes de Docker. Si estás en Windows y no ves los cambios, asegúrate de tener `usePolling: true` en tu `vite.config.js`.
-- **Nginx:** Actúa como proxy inverso. Cualquier petición que no sea PHP será manejada según la configuración en `backend/nginx/default.conf`.

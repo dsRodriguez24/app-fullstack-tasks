@@ -12,6 +12,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
       "providers": path.resolve(__dirname, "./src/providers"),
       "api": path.resolve(__dirname, "./src/api"),
+      "assets": path.resolve(__dirname, "./src/assets"),
       "helpers": path.resolve(__dirname, "./src/helpers"),
       "routes": path.resolve(__dirname, "./src/routes"),
       "theme": path.resolve(__dirname, "./src/theme"),
